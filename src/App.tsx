@@ -2,14 +2,13 @@ import './App.css';
 import React from "react"
 
 import Game from "./Game";
-import DealCards from './withCards';
 import DarkMode from "./DarkMode"
 
 interface State{
   darkMode: boolean;
 }
 
-export default class App extends React.Component{
+export default class App extends React.Component<{}, State> {
   state = {
     darkMode: false,
   };

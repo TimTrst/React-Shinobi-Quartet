@@ -2,10 +2,17 @@ import React, {useContext} from 'react';
 import PropTypes from "prop-types";
 
 import "./Card.css"
-import Shinobi from "./Shinobi.js";
+import Shinobi from "./Shinobi";
 import DarkMode from "./DarkMode";
 
-export default function Card({shinobi, uncovered, onSelectedProperty, selectedProperty, remove}) {
+interface Props {
+    shinobi: Shinobi;
+    uncovered: boolean;
+    onSelectedProperty?: (property: keyof Shinobi) => void;
+    selectedProperty?: keyof Shinobi | '';
+}
+
+export default function Card({shinobi, uncovered, onSelectedProperty, selectedProperty}: Props) {
     
     const front = (<div className = "card">
         <h1>{shinobi.name ? shinobi.name : 'Shinobi not found: ERROR'}</h1>
@@ -18,12 +25,13 @@ export default function Card({shinobi, uncovered, onSelectedProperty, selectedPr
              <tbody>
                 {Object.keys(Shinobi.properties).map(property => {
                     const shinobiProberty = Shinobi.properties[property];
+                    const propertyValue = shinobi[property as keyof Shinobi];
                     return(
                         <tr key = {property} className={selectedProperty === property ? 'active' : ''}
-                             onClick={() => onSelectedProperty(property)}>
+                             onClick={() => onSelectedProperty && onSelectedProperty(property as keyof Shinobi)}>
                             <td>{shinobiProberty.label}</td>
                             <td>
-                                {shinobi[property]}&nbsp;{shinobiProberty.unit}</td>
+                                {propertyValue}&nbsp;{shinobiProberty.unit}</td>
                         </tr>
                     );
                 })}
@@ -41,10 +49,3 @@ export default function Card({shinobi, uncovered, onSelectedProperty, selectedPr
         
         return(<div className = {darkMode ? "dark" : "light"}>{uncovered ? front : back}</div>);
 }
-
-Card.propTypes = {
-    uncovered: PropTypes.bool.isRequired,
-    shinobi: PropTypes.instanceOf(Shinobi).isRequired,
-    onSelectedProperty: PropTypes.func,
-    selectedProperty: PropTypes.string,
-};

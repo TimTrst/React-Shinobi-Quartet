@@ -5,8 +5,26 @@ import axios from 'axios';
 import Shinobi from "./Shinobi";
 import selectRandomProperty from './selectRandomProperty';
 
-export default function useCards(){
-    const [state, setState] = useState({
+interface Card {
+    name: string;
+    image: string;
+    size: number;
+    weight: number;
+    age: number;
+    chakra: number;
+    power: number;
+}
+
+interface State{
+    computerUncovered: boolean;
+    selectedProperty?: keyof Shinobi | '';
+    playersTurn: boolean;
+    player: Shinobi [];
+    computer: Shinobi [];
+}
+
+export default function useCards():[State, (property: keyof Shinobi) => void] {
+    const [state, setState] = useState<State>({
         computerUncovered: false,
         selectedProperty: '',
         playersTurn: true,
@@ -20,13 +38,13 @@ export default function useCards(){
         dealCards(data);
      };
         fetchData();
-        }, []);
+         }, []);
         useEffect(() => {
         if (state.selectedProperty !== '') {
-        setTimeout(() => {
-        compare(state.selectedProperty);
-        }, 2000);
-     }
+            setTimeout(() => {
+                compare(state.selectedProperty as keyof Shinobi);
+            }, 2000);
+        }
     }, [state.selectedProperty]);
         useEffect(() => {
         if (
@@ -35,13 +53,13 @@ export default function useCards(){
             state.playersTurn === false
         ) {
         setTimeout(() => {
-        const property = selectRandomProperty();
-        play(property);
+         const property = selectRandomProperty();
+             play(property);
         }, 2000);
         }
   }, [state.computerUncovered, state.selectedProperty, state.playersTurn]);
 
-    function compare(property){
+    function compare(property: keyof Shinobi){
         let playersTurn = state.playersTurn;
 
         const cardPlayer = state.player[0];
@@ -85,34 +103,21 @@ export default function useCards(){
                     computer,
                 },
             }),
-            () => {
-                if(!playersTurn){
-                    setTimeout(() => {
-                        const property = this.selectRandomProperty();
-                        play(property);
-                    }, 2500);
-                }
-            },
         );
     }
 
-    function play(property) {
+    function play(property: keyof Shinobi) {
         setState(state => 
             update(state, {
             selectedProperty:  {$set: property},
             computerUncovered: { $set: true},
-            }),
-            () => {
-                setTimeout(() => {
-                    compare(property);
-                }, 2500);
-            },
+            })
         );
     }
 
-    function dealCards(cards){
-        const computer = [];
-        const player = [];
+    function dealCards(cards: Shinobi []){
+        const computer : Shinobi[] = [];
+        const player: Shinobi[] = [];
         cards.forEach((card, index) => {
             const shinobi = new Shinobi(card.name, card.image, card.size, card.weight, card.age, card.chakra, card.power);
             if(index % 2 === 0)

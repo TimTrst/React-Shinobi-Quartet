@@ -5,7 +5,11 @@ import './Game.css';
 import Card from './Card';
 import useCards from "./useCards";
 
-export default function Game({ title }) {   
+interface Props{
+    title: string;
+}
+
+export default function Game({ title } : Props) {   
     const [state, play] = useCards();
     return(
         <>
@@ -15,17 +19,19 @@ export default function Game({ title }) {
             </div>
             <div className = "cards"> 
             {state.player[0] && (
-                <Card shinobi={state.player[0]}                                             //Übergeben der Karte mit Values an die Card Klasse!
-                 uncovered= {true}                                                    //Aufgedeckt?
-                 selectedProperty={state.selectedProperty}                                  //Welche Zeile der Karte wurde gewählt?
-                 onSelectedProperty={play}     
+                <Card 
+                    shinobi={state.player[0]}                                             //Übergeben der Karte mit Values an die Card Klasse!
+                    uncovered= {true}                                                    //Aufgedeckt?
+                    selectedProperty={state.selectedProperty}                                  //Welche Zeile der Karte wurde gewählt?
+                    onSelectedProperty={play}     
                  //remove = {remove}
                  />
             )}
             {state.computer[0] &&(
-                <Card shinobi={state.computer[0]} 
-                uncovered={state.computerUncovered}
-                selectedProperty={state.selectedProperty}
+                <Card 
+                    shinobi={state.computer[0]} 
+                    uncovered={state.computerUncovered}
+                    selectedProperty={state.selectedProperty}
                 //onSelectedProperty={this.getSlectedPropertyHandler.bind(this)()} 
                 />
              )}
@@ -33,6 +39,3 @@ export default function Game({ title }) {
         </>
     );
 }
-Game.propTypes = {
-    title: PropTypes.string.isRequired,
-};
