@@ -14,7 +14,8 @@ interface Props {
 
 export default function Card({shinobi, uncovered, onSelectedProperty, selectedProperty}: Props) {
     
-    const front = (<div className = "card">
+    const front = (
+    <>
         <h1>{shinobi.name ? shinobi.name : 'Shinobi not found: ERROR'}</h1>
             {shinobi.image && 
             (
@@ -37,15 +38,21 @@ export default function Card({shinobi, uncovered, onSelectedProperty, selectedPr
                 })}
              </tbody>
             </table>
-        </div>
-        );
+    </>
+);
         
-        const back = (<div className = "card back" >
+        const back = (<div className = "back back" >
         <img alt="akatsuki" className ="akatsuki"  src={`${process.env.PUBLIC_URL}/bilder/akatsuki.png`}
             height="180" width="210" />
         </div>);
         
         const darkMode = useContext(DarkMode);
         
-        return(<div className = {darkMode ? "dark" : "light"}>{uncovered ? front : back}</div>);
+        const classNames = [
+            'card',
+            uncovered ? '' : 'back',
+            darkMode ? 'dark' : 'light',
+        ]
+        
+        return(<div className = {classNames.join(' ')}>{uncovered ? front : back}</div>);
 }

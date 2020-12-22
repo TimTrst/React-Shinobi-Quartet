@@ -1,8 +1,4 @@
-h1 {
-    font-size: 20px;
-    margin: 0 0 10px 0;
-}
- 
+
 .card {
     border: 2px solid black;
     border-radius: 10px;
@@ -11,51 +7,46 @@ h1 {
     padding: 15px;
     box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.25);
 }
+.card h1 {
+    font-size: 20px;
+    margin: 0 0 10px 0;
+}
 
-.dark .card {
+.light .card {
+    color: black;
+    background-color: white;
+}
+
+.dark .card{
     color: #eee;
     background-color: black;
 }
-
-table {
+    
+.card table {
     width: 100%;
     border-collapse: collapse;
-}
+ }
 
-td {
+.card td {
     padding: 5px 0;
 }
 
-/*
-.light tr:nth-child(2n -1) {
-    background-color: #ddd;
+ .card tr:nth-child(2n -1).active, .active{
+    background-color: rgb(189, 178, 23);
 }
-.light tr:nth-child(2n -1).active, .active{
-    background-color: rgb(255, 255, 29);
-}
-.dark tr:nth-child(2n -1) {
-    background-color: #666;
-}
-.dark tr:nth-child(2n -1).active, .active{
-    background-color: rgb(155, 152, 17);
-}*/
-
-tr:nth-child(2n -1).active, .active{
+ .card .dark tr:nth-child(2n -1).active, .active{
     background-color: rgb(189, 178, 23);
 }
 
-.dark tr:nth-child(2n -1).active, .active{
-    background-color: rgb(189, 178, 23);
-}
-
-tr:nth-child(2n -1) {
+ .card tr:nth-child(2n -1) {
     background-color: rgb(182, 182, 182);
 }
 
 .dark tr:nth-child(2n -1) {
     background-color: #666;
 }
-.back {
+
+.back{
     height: 388px;
     background-color: black;
     border: 2px solid rgb(252, 3, 3);
