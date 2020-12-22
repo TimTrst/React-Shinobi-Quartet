@@ -1,0 +1,44 @@
+{
+    "card": [
+        {
+            "id": 1,
+            "name": "Tendo",
+            "image": "placeholder.jpg",
+            "size": 1.80,
+            "weight": 67,
+            "age": 32,
+            "chakra": 500,
+            "power": 3000 
+        },
+        {
+            "id": 2,
+            "name": "Naruto",
+            "image": "naruto.png",
+            "size": 1.80,
+            "weight": 51,
+            "age": 18,
+            "chakra": 800,
+            "power": 3700 
+        },
+        {
+            "id": 3,
+            "name": "Itachi",
+            "image": "itachi.png",
+            "size": 1.75,
+            "weight": 64,
+            "age": 24,
+            "chakra": 350,
+            "power": 3500 
+        },
+        {
+            "id": 4,
+            "name": "Kakashi",
+            "image": "kakashi.png",
+            "size": 1.81,
+            "weight": 67,
+            "age": 32,
+            "chakra": 300,
+            "power": 2000 
+        }
+    ]
+}
