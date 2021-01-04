@@ -23,7 +23,7 @@ export default function Game({ title } : Props) {
                     shinobi={state.player[0]}                                             //Übergeben der Karte mit Values an die Card Klasse!
                     uncovered= {true}                                                    //Aufgedeckt?
                     selectedProperty={state.selectedProperty}                                  //Welche Zeile der Karte wurde gewählt?
-                    onSelectedProperty={play}     
+                    onSelectProperty={play}     
                  //remove = {remove}
                  />
             )}

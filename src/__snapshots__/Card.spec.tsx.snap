@@ -1,0 +1,86 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Snapshots should match the snapshots 1`] = `
+<div
+  className="card  light"
+>
+  <h1>
+    Tendo
+  </h1>
+  <img
+    alt="Tendo"
+    height="200"
+    src="/bilder/Bild"
+    width="200"
+  />
+  <table>
+    <tbody>
+      <tr
+        className=""
+        onClick={[Function]}
+      >
+        <td>
+          Size
+        </td>
+        <td>
+          1.8
+           
+          m
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+      >
+        <td>
+          Weight
+        </td>
+        <td>
+          67
+           
+          kg
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+      >
+        <td>
+          Age
+        </td>
+        <td>
+          32
+           
+          Years
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+      >
+        <td>
+          Chakra
+        </td>
+        <td>
+          500
+           
+          Points
+        </td>
+      </tr>
+      <tr
+        className=""
+        onClick={[Function]}
+      >
+        <td>
+          Power
+        </td>
+        <td>
+          3700
+           
+          
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

@@ -1,58 +1,50 @@
-import React, {useContext} from 'react';
-import PropTypes from "prop-types";
+import React, { useContext } from 'react';
+import classNames from 'classnames';
 
-import "./Card.css"
-import Shinobi from "./Shinobi";
-import DarkMode from "./DarkMode";
+import './Card.scss';
+import Shinobi from './Shinobi';
+import DarkMode from './DarkMode';
+import CardTable from './CardTable';
 
 interface Props {
-    shinobi: Shinobi;
-    uncovered: boolean;
-    onSelectedProperty?: (property: keyof Shinobi) => void;
-    selectedProperty?: keyof Shinobi | '';
+  shinobi: Shinobi;
+  uncovered: boolean;
+  onSelectProperty?: (property: keyof Shinobi) => void;
+  selectedProperty?: keyof Shinobi | '';
 }
 
-export default function Card({shinobi, uncovered, onSelectedProperty, selectedProperty}: Props) {
-    
-    const front = (
+export default function Card({
+  shinobi,
+  uncovered,
+  onSelectProperty,
+  selectedProperty,
+}: Props) {
+  const darkMode = useContext(DarkMode);
+  const front = (
     <>
-        <h1>{shinobi.name ? shinobi.name : 'Shinobi not found: ERROR'}</h1>
-            {shinobi.image && 
-            (
-                <img alt={shinobi.name} src={`${process.env.PUBLIC_URL}/bilder/${shinobi.image}`}
-                height="200" width="200" />
-            )}
-            <table>
-             <tbody>
-                {Object.keys(Shinobi.properties).map(property => {
-                    const shinobiProberty = Shinobi.properties[property];
-                    const propertyValue = shinobi[property as keyof Shinobi];
-                    return(
-                        <tr key = {property} className={selectedProperty === property ? 'active' : ''}
-                             onClick={() => onSelectedProperty && onSelectedProperty(property as keyof Shinobi)}>
-                            <td>{shinobiProberty.label}</td>
-                            <td>
-                                {propertyValue}&nbsp;{shinobiProberty.unit}</td>
-                        </tr>
-                    );
-                })}
-             </tbody>
-            </table>
+      <h1>{shinobi.name ? shinobi.name : 'Unbekannt'}</h1>
+      {shinobi.image && (
+        <img
+          alt={shinobi.name}
+          src={`${process.env.PUBLIC_URL}/${shinobi.image}`}
+          height="200"
+          width="200"
+        />
+      )}
+      <CardTable
+        shinobi={shinobi}
+        onSelectProperty={onSelectProperty}
+        selectedProperty={selectedProperty}
+        darkMode={darkMode}
+      />
     </>
-);
-        
-        const back = (<div className = "back back" >
-        <img alt="akatsuki" className ="akatsuki"  src={`${process.env.PUBLIC_URL}/bilder/akatsuki.png`}
-            height="180" width="210" />
-        </div>);
-        
-        const darkMode = useContext(DarkMode);
-        
-        const classNames = [
-            'card',
-            uncovered ? '' : 'back',
-            darkMode ? 'dark' : 'light',
-        ]
-        
-        return(<div className = {classNames.join(' ')}>{uncovered ? front : back}</div>);
+  );
+
+  const cardClasses = classNames('card', {
+    back: !uncovered,
+    light: !darkMode,
+    dark: darkMode,
+  });
+
+  return <div className={cardClasses}>{uncovered ? front : ''}</div>;
 }
