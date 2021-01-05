@@ -4,7 +4,6 @@
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.6",
-    "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.6.0",
     "@types/jest": "^26.0.19",
     "@types/node": "^14.14.14",
@@ -46,11 +45,13 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/react": "^11.2.2",
     "@types/classnames": "^2.2.11",
     "@types/react-test-renderer": "^17.0.0",
     "@types/styled-components": "^5.1.7",
     "eslint-config-airbnb": "^18.2.1",
     "json-server": "^0.16.3",
-    "react-test-renderer": "^17.0.1"
+    "react-test-renderer": "^17.0.1",
+    "react-testing-library": "^8.0.1"
   }
 }
