@@ -1,8 +1,8 @@
 import './App.css';
 import React from "react"
 
-import Game from "./Game";
-import DarkMode from "./DarkMode"
+import Game from "./game/Game";
+import DarkMode from "./game/DarkMode"
 
 interface State{
   darkMode: boolean;

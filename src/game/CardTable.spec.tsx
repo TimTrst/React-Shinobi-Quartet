@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 import CardTable from './CardTable';
 import Shinobi from './Shinobi';
 import { render, fireEvent } from '@testing-library/react';
-import Card from './Card';
+
 
 describe("CardTable", () => {
     it("should highlight a certain row correctly", () => {
