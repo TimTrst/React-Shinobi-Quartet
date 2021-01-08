@@ -5,16 +5,6 @@ import axios from 'axios';
 import Shinobi from "./Shinobi";
 import selectRandomProperty from './selectRandomProperty';
 
-interface Card {
-    name: string;
-    image: string;
-    size: number;
-    weight: number;
-    age: number;
-    chakra: number;
-    power: number;
-}
-
 interface State{
     computerUncovered: boolean;
     selectedProperty?: keyof Shinobi | '';
@@ -67,7 +57,7 @@ export default function useCards():[State, (property: keyof Shinobi) => void] {
         const cardComputer = state.computer[0];
         let computer = update(state.computer, { $splice: [[0,1]] });
     
-        if(cardPlayer[property] > cardComputer[property])
+        if(cardPlayer[property]! > cardComputer[property]!)
         {
             playersTurn = true;
             player = update(player, { $push: [cardPlayer, cardComputer]} );
@@ -78,7 +68,7 @@ export default function useCards():[State, (property: keyof Shinobi) => void] {
                 return;
             }
         }
-        else if(cardPlayer[property] < cardComputer[property])
+        else if(cardPlayer[property]! < cardComputer[property]!)
         {
             playersTurn = false;
             computer = update(computer, { $push: [cardComputer, cardPlayer] });

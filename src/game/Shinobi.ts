@@ -8,13 +8,15 @@ export default class Shinobi {
         power: {label: 'Power', unit: ''}
     };
     
+    public id?: number;
+
     constructor(
         public name :string,
         public image : string,
-        public size : number,
-        public weight : number,
-        public age : number,
-        public chakra : number,
-        public power : number,
+        public size : number | '',
+        public weight : number | '',
+        public age : number | '',
+        public chakra : number | '',
+        public power : number | '',
     ){}
 }

@@ -6,6 +6,8 @@ import Game from "./game/Game";
 import DarkMode from "./game/DarkMode";
 import Login from "./login/login";
 import axios from 'axios';
+import From from "./admin/Form";
+import Shinobi from './game/Shinobi';
 
 interface State{
   darkMode: boolean;
@@ -49,6 +51,24 @@ handleLogin = async (username: string, password: string) => {
 
 render(){
     return (
+      <From
+        onSubmit={shinobi => {
+        const data = new FormData();
+        data.append('name', shinobi.name);
+        data.append('image', shinobi.image);
+        data.append('size', shinobi.size.toString());
+        data.append('weight', shinobi.weight.toString());
+        data.append('age', shinobi.age.toString());
+        data.append('chakra', shinobi.chakra.toString());
+        data.append('power', shinobi.power.toString());
+        axios.post('http://localhost:3001/card', data, {
+          headers: {
+           'content-type': 'multipart/form-data',
+           },
+      });
+    }}/>
+        );
+        {/*
       <DarkMode.Provider value = {this.state.darkMode}>
         {
           this.state.loggedIn && (
@@ -60,8 +80,8 @@ render(){
         {
           !this.state.loggedIn && <Login onLogin={this.handleLogin} errorFromParent={this.state.errorFromParent} />
         }
-      </DarkMode.Provider>
-    );
+        </DarkMode.Provider>
+      */ }
   }
 }
 
