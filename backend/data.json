@@ -82,6 +82,16 @@
       "power": "tret",
       "image": "dwqe.png",
       "id": 16
+    },
+    {
+      "name": "ccsc1",
+      "size": "182",
+      "weight": "323",
+      "age": "32",
+      "chakra": "12",
+      "power": "013",
+      "image": "ccsc1.png",
+      "id": 17
     }
   ]
 }
