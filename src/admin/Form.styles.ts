@@ -1,5 +1,6 @@
 import styled, {css} from "styled-components";
 import { Form as FormikForm, Field as FormikField } from "formik";
+import { TextField as MatTextField } from '@material-ui/core';
 
 export const Form = styled(FormikForm)`
     display: flex;
@@ -30,3 +31,7 @@ export const Row = styled.div`
 export const Error = styled.div`
   color: red;
 `;
+
+export const TextField = styled(MatTextField)`
+  width: 400px;
+` as typeof MatTextField;

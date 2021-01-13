@@ -8,6 +8,7 @@ import Login from "./login/login";
 import axios from 'axios';
 import From from "./admin/Form";
 import Shinobi from './game/Shinobi';
+import Admin from "./admin/Admin";
 
 interface State{
   darkMode: boolean;
@@ -50,6 +51,13 @@ handleLogin = async (username: string, password: string) => {
 }
 
 render(){
+  return(
+    <Admin />
+  )
+}
+
+/*
+render(){
     return (
       <From
         onSubmit={shinobi => {
@@ -68,7 +76,7 @@ render(){
       });
     }}/>
         );
-        {/*
+        
       <DarkMode.Provider value = {this.state.darkMode}>
         {
           this.state.loggedIn && (
@@ -81,8 +89,8 @@ render(){
           !this.state.loggedIn && <Login onLogin={this.handleLogin} errorFromParent={this.state.errorFromParent} />
         }
         </DarkMode.Provider>
-      */ }
+      }
+    */ 
   }
-}
 
 

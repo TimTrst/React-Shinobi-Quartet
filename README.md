@@ -1,3 +1,13 @@
+This project was created on the foundation of the Book: "React - Das umfassende Handbuch" by Sebastian Springer
+and is a documentation of the different steps of my learning process.
+The Branches represent these steps. 
+(I first started documenting at the change to Typescript)
+
+**To use this in some branches (or master) you need to npm start in the "backend" folder and launch a local JSON Server (e.g: npx json-server -p 3001 --watch data.json)
+
+
+This app was created using the "Create React App" feature.
+Just follow the steps below to run the Project.
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

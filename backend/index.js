@@ -8,7 +8,8 @@ const server = express();
 
 server.use(fileUpload());
 
-server.use(bodyParser.json());
+//server.use(bodyParser.json());
+server.use(bodyParser.urlencoded({ extended: true }));
 server.use(cors());
 
 server.use('/card', (req, res, next) => {
